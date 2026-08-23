@@ -7,6 +7,7 @@
 - páginas: 48 pp.
 - dimensiones: 16.5 x 11 cm
 - impresión: offset
+- disponibilidad: pdf
 
 - contenido: 
 Derechos de lo profundo es una carta abierta sobre nuestra relación con las profundidades oceánicas y la necesidad de protegerlas. Está redactada de manera conjunta por activistas indígenas del Pacífico, juristas y científicos marinos con el propósito de contribuir al creciente movimiento por los derechos de la naturaleza.        
