@@ -6,13 +6,21 @@
   Variables reutilizables para mantener un sistema visual
   consistente en todo el documento.
 */
+@font-face {
+  font-family: 'rmregular';
+  src: url('rmregular-webfont.woff2') format('woff2'),
+       url('rmregular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
 
 :root {
   --color-background: #f4f4f0;
   --color-text: #171717;
   --color-accent: #5b3df5;
 
-  --font-family-base: system-ui, Arial, Helvetica, sans-serif;
+  --font-family-base: 'rmregular', system-ui, Arial, Helvetica, sans-serif;
 
   --font-size-body: 1rem;
   --font-size-h1: 3rem;
