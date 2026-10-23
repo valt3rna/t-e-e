@@ -153,3 +153,18 @@ nav {
 nav a {
   padding: 0.5rem;
 }
+/*
+  ============================================================
+  PORTADAS
+  ============================================================
+
+  Las imágenes originales miden 600px de ancho;
+  aquí se muestran reducidas, con su proporción intacta.
+*/
+
+article img {
+  display: block;
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+}
