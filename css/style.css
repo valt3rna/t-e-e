@@ -147,11 +147,15 @@ nav {
   margin-right: 1rem;
   background-color: var(--color-background);
   padding: 1em;
-  text-align: center;
+  text-align: left;
 }
 
+/* t-e-e y ? apilados a la izquierda, en negro */
 nav a {
-  padding: 0.5rem;
+  display: block;
+  padding: 0.25rem 0.5rem;
+  color: var(--color-text);
+  text-decoration: none;
 }
 /*
   ============================================================
@@ -164,7 +168,26 @@ nav a {
 
 article img {
   display: block;
+  margin: 1rem auto;
   width: 170px;
   max-width: 100%;
   height: auto;
+}
+
+/*
+  ============================================================
+  FICHA DE CADA PUBLICACIÓN
+  ============================================================
+
+  Año, portada, ficha técnica y PDF centrados.
+*/
+
+article > footer {
+  text-align: center;
+}
+
+article .specs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
