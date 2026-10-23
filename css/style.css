@@ -214,14 +214,8 @@ article .specs {
   padding: 1.25rem 1rem;
 }
 
-.about address {
-  font-style: normal;
-}
-
-.about ul {
-  list-style: none;
+.about main p {
   margin: 0 0 1.5rem;
-  padding: 0;
 }
 
 .about a {
