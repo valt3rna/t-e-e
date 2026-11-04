@@ -63,6 +63,11 @@ header {
   margin-bottom: 2rem;
 }
 
+/* sin espacio extra arriba del título del sitio */
+main > header h1 {
+  margin-top: 0;
+}
+
 header p {
   text-wrap-style: balance;
 }
@@ -124,6 +129,21 @@ main {
   margin: 0 auto;
 }
 
+/* en pantallas chicas, sólo un pequeño espacio bajo el logo */
+@media (max-width: 767px) {
+  body > main {
+    padding-top: 0.5rem;
+  }
+}
+
+/* en compu, 3/4 del ancho anterior para que las líneas no sean tan largas */
+@media (min-width: 768px) {
+  main {
+    width: 48.75%;
+    max-width: 930px;
+  }
+}
+
 
 /*
   ============================================================
@@ -142,12 +162,21 @@ section {
 }
 
 nav {
-  position: sticky;
-  top: 0;
-  margin-right: 1rem;
-  background-color: var(--color-background);
   padding: 1em;
   text-align: left;
+}
+
+/*
+  En pantallas de compu el logo queda fijo arriba a la izquierda,
+  sin ocupar una franja propia: el contenido empieza desde arriba.
+  En pantallas chicas va antes del contenido, con un pequeño espacio.
+*/
+@media (min-width: 768px) {
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 }
 
 /* t-e-e y ? apilados a la izquierda, en negro */
@@ -207,8 +236,13 @@ article .specs {
   align-items: start;
 }
 
+.about nav {
+  position: static;
+}
+
 .about main {
   width: auto;
+  max-width: none;
   min-width: 0;
   margin: 0;
   padding: 1.25rem 1rem;
