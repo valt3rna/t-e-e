@@ -182,9 +182,11 @@ main {
 
 /* en pantallas chicas la columna ocupa todo el espacio junto al menú */
 @media (max-width: 767px) {
-  main {
+  body > main {
     width: auto;
     min-width: 0;
+    padding-left: 1rem;
+    padding-right: 1.25rem;
   }
 }
 
@@ -280,17 +282,76 @@ article img {
   FICHA DE CADA PUBLICACIÓN
   ============================================================
 
-  Año, portada, ficha técnica y PDF centrados.
+  Año centrado; debajo, la portada con la ficha técnica,
+  la disponibilidad y el PDF a su derecha.
 */
 
 article > footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 0;
+}
+
+/* el año va solo, centrado, arriba de la portada */
+article > footer .year {
+  flex-basis: 100%;
   text-align: center;
+  margin: 0;
+}
+
+/* portada y ficha lado a lado, como en la maqueta */
+article > footer img {
+  margin: 0;
+  min-width: 0;
+}
+
+/* en celular, portada un poco más chica para que la ficha quepa al lado */
+@media (max-width: 767px) {
+  article > footer {
+    gap: 1rem;
+  }
+
+  article > footer img {
+    width: 140px;
+  }
+}
+
+/* espacio entre una publicación y la siguiente */
+article {
+  margin-bottom: 6rem;
+}
+
+article .ficha {
+  text-align: left;
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+article .ficha p {
+  margin: 1em 0 0;
 }
 
 article .specs {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+/* enlaces dentro de cada publicación en negro, subrayados */
+article a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+/* créditos (coediciones, apoyos) al tamaño del texto */
+article .credits small {
+  font-size: inherit;
 }
 
 /*
