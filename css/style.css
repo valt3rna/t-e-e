@@ -56,6 +56,7 @@ body {
 
   font-family: var(--font-family-base);
   font-size: var(--font-size-body);
+  line-height: 1.5;
 }
 
 header {
