@@ -22,10 +22,15 @@
 
   --font-family-base: 'rmregular', system-ui, Arial, Helvetica, sans-serif;
 
-  --font-size-body: 1rem;
+  --font-size-body: 1.125rem;
   --font-size-h1: 2rem;
   --font-size-h2: 2rem;
-  --font-size-h3: 1.25rem;
+  --font-size-h3: 1.375rem;
+  --font-size-index: 2.25rem;
+  --font-size-nav: 1.5rem;
+
+  /* ancho de la franja vertical del menú */
+  --nav-width: 4rem;
 }
 
 /*
@@ -92,6 +97,51 @@ h3 {
   font-size: var(--font-size-h3);
 }
 
+/*
+  ============================================================
+  CABEZA DE CADA PUBLICACIÓN
+  ============================================================
+
+  El número y el título subrayado funcionan como anclas visuales.
+  Títulos en redondas (sin bold), subrayados.
+*/
+
+article .index {
+  font-size: var(--font-size-index);
+  line-height: 1;
+  margin: 0 0 1.5rem;
+}
+
+article header {
+  margin-bottom: 1.5rem;
+}
+
+article h3 {
+  font-weight: normal;
+  line-height: 1.3;
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+article h3 .subtitle {
+  display: block;
+}
+
+article header p {
+  margin: 0;
+}
+
+article .authors {
+  font-size: var(--font-size-h3);
+  line-height: 1.3;
+}
+
+article .translation {
+  margin-top: 1rem;
+}
+
 
 /*
   ============================================================
@@ -130,10 +180,11 @@ main {
   margin: 0 auto;
 }
 
-/* en pantallas chicas, sólo un pequeño espacio bajo el logo */
+/* en pantallas chicas la columna ocupa todo el espacio junto al menú */
 @media (max-width: 767px) {
-  body > main {
-    padding-top: 0.5rem;
+  main {
+    width: auto;
+    min-width: 0;
   }
 }
 
@@ -162,31 +213,51 @@ section {
   padding-top: 2em;
 }
 
-nav {
-  padding: 1em;
-  text-align: left;
-}
-
 /*
-  En pantallas de compu el logo queda fijo arriba a la izquierda,
-  sin ocupar una franja propia: el contenido empieza desde arriba.
-  En pantallas chicas va antes del contenido, con un pequeño espacio.
+  ============================================================
+  MENÚ
+  ============================================================
+
+  Franja vertical fija a la izquierda, de arriba abajo:
+  t-e-e (girado) arriba, ? al centro y ↑ (subir al inicio) abajo.
+  Como el contenido deja libre esa franja, nunca se enciman.
 */
-@media (min-width: 768px) {
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--nav-width);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  font-size: var(--font-size-nav);
+  line-height: 1;
 }
 
-/* t-e-e y ? apilados a la izquierda, en negro */
 nav a {
-  display: block;
-  padding: 0.25rem 0.5rem;
   color: var(--color-text);
   text-decoration: none;
 }
+
+/* t-e-e se lee de abajo hacia arriba */
+nav .logo {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+body {
+  padding-left: var(--nav-width);
+}
+
+/* la flecha sube al inicio con desplazamiento suave */
+html {
+  scroll-behavior: smooth;
+}
+
 /*
   ============================================================
   PORTADAS
@@ -227,41 +298,40 @@ article .specs {
   PÁGINA ?  (about.html)
   ============================================================
 
-  Navegación en una columna a la izquierda
-  y el contenido en otra columna a la derecha.
+  Texto de información y contacto en una columna,
+  alineada a la izquierda junto al menú.
 */
-
-.about {
-  display: grid;
-  grid-template-columns: 14rem 1fr;
-  align-items: start;
-}
-
-.about nav {
-  position: static;
-}
 
 .about main {
   width: auto;
-  max-width: none;
   min-width: 0;
-  margin: 0;
-  padding: 1.25rem 1rem;
+  max-width: 44rem;
+  margin: 0 0 0 10rem;
+  padding: 1.5rem 1rem;
 }
 
 .about main p {
   margin: 0 0 1.5rem;
 }
 
-.about a {
+.about .info {
+  margin-bottom: 3rem;
+}
+
+.about main a {
   color: var(--color-text);
   text-decoration: none;
 }
 
-/* en pantallas chicas, una columna */
-@media (max-width: 600px) {
-  .about {
-    grid-template-columns: 1fr;
+.about main a:hover,
+.about main a:focus {
+  text-decoration: underline;
+}
+
+/* en pantallas chicas, junto al menú */
+@media (max-width: 767px) {
+  .about main {
+    margin-left: 0;
   }
 }
 
