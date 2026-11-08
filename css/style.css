@@ -397,11 +397,20 @@ article .credits small {
   text-decoration: underline;
 }
 
-/* crédito al pie, alineado con el texto */
+/* la página ocupa al menos toda la pantalla
+   para que el crédito quede hasta abajo */
+.about {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* crédito al pie de la pantalla, alineado con el texto */
 .about .credito {
   max-width: 44rem;
-  margin: 3rem 0 0 10rem;
-  padding: 1.5rem 1rem;
+  margin: auto 0 0 10rem;
+  padding: 3rem 1rem 1.5rem;
 }
 
 .about .credito a {
