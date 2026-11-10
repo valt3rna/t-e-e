@@ -1,0 +1,47 @@
+# Publica el sitio en el servidor de t-e-e.org cada vez que hay
+# un cambio en la rama main (o a mano, desde la pestaña Actions).
+#
+# Usa los datos de conexión guardados en
+# Settings → Secrets and variables → Actions:
+#   FTP_SERVER     servidor (el mismo que en Cyberduck)
+#   FTP_USERNAME   usuario
+#   FTP_PASSWORD   contraseña
+#   FTP_SERVER_DIR (opcional) carpeta del sitio en el servidor,
+#                  terminada en /, por ejemplo public_html/
+#
+# Sólo sube y reemplaza archivos del sitio; no borra la carpeta pdf
+# ni nada que no haya subido antes.
+
+name: Publicar sitio
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el sitio
+        uses: actions/checkout@v4
+
+      - name: Subir al servidor por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_SERVER_DIR || './' }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            books/**
+            README.md
+            format.md
+            **/.DS_Store
